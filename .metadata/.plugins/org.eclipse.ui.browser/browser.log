@@ -1,0 +1,22 @@
+
+1월 16, 2023 17:18:39.860 NEW SESSION
+1월 16, 2023 17:18:39.860 [12940:2532:0116/171839.859:ERROR:device_event_log_impl.cc(215)] [17:18:39.860] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+
+1월 17, 2023 09:22:31.405 NEW SESSION
+1월 17, 2023 09:22:31.405 [6336:6448:0117/092231.402:ERROR:device_event_log_impl.cc(215)] [09:22:31.402] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 17, 2023 14:58:00.609 [6336:6448:0117/145800.609:ERROR:device_event_log_impl.cc(215)] [14:58:00.610] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+1월 18, 2023 09:12:57.87 NEW SESSION
+1월 18, 2023 09:12:57.87 [11168:6236:0118/091257.086:ERROR:device_event_log_impl.cc(215)] [09:12:57.086] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 18, 2023 10:55:11.55 [1916:1724:0118/105511.054:ERROR:device_event_log_impl.cc(215)] [10:55:11.054] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 18, 2023 10:56:41.878 [8384:12232:0118/105641.878:ERROR:device_event_log_impl.cc(215)] [10:56:41.877] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 18, 2023 12:05:29.25 [8384:12232:0118/120529.025:ERROR:interface_endpoint_client.cc(695)] Message 5 rejected by interface blink.mojom.WidgetHost
+
+1월 19, 2023 09:05:34.812 NEW SESSION
+1월 19, 2023 09:05:34.812 [7632:7944:0119/090534.811:ERROR:device_event_log_impl.cc(215)] [09:05:34.811] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 19, 2023 14:55:24.697 [7632:7944:0119/145524.697:ERROR:network_service_instance_impl.cc(539)] Network service crashed, restarting service.
+1월 19, 2023 14:55:24.707 [7632:7944:0119/145524.707:ERROR:gpu_process_host.cc(991)] GPU process exited unexpectedly: exit_code=1
+
+1월 19, 2023 18:19:14.947 NEW SESSION
+1월 19, 2023 18:19:14.947 [13656:9704:0119/181914.946:ERROR:device_event_log_impl.cc(215)] [18:19:14.946] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 19, 2023 19:17:22.975 [13656:9704:0119/191722.975:ERROR:device_event_log_impl.cc(215)] [19:17:22.974] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)

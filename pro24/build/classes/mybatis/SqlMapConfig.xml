@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd" >
+
+<!--데이터베이스 연동 시 반환되는 값을 저장할 빈이나 트랜젝션, 데이터소스 등 마이바티스 관련 정보를 설정하는 파일.  -->
+
+<configuration>
+	<typeAliases> <!--typeAlias는 패키지에 대한 별명을 지정할 수 있다. type값에 풀패키지명을 입력하고, alias에는 별명을 지정한다.-->
+	<!-- <typeAlias type="com.spring.ex01.MemberVO" alias="memberVO" /> -->  
+	<!-- <typeAlias type="com.spring.ex03.MemberVO" alias="memberVO" /> -->  <!--member.xml 파일의 9번째 줄 memberVO타입! -->
+		 <typeAlias type="com.spring.ex04.MemberVO" alias="memberVO" />
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="org.mariadb.jdbc.Driver" />
+				<property name="url" value="jdbc:mariadb://localhost:3306/servletex" />
+				<property name="username" value="root" />
+				<property name="password" value="1234" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mybatis/mappers/member.xml" /> <!-- 실질적으로 사용하는 -->
+	</mappers>
+</configuration>

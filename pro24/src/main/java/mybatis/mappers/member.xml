@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--실제 db연동시 실행할 sql문 작성하는 파일 : 회원정보 관련 sql문을 설정한다.-->
+
+<mapper namespace = "mapper.member"> <!--member.xml의 네임스페이스를 지정한다.(sql의 id 중복시 namespace로 구분한다.)-->
+	<!-- 여기에서 list형으로 가는게 X, 한 행씩보내는데 MemberDAO의 selectAllMemberList()에서 리스트형태로 받는다.-->
+	<resultMap id="memResult" type="memberVO"> <!--sql문을 실행한 후 반환되는 레코드들을 <typeAlias>태그에서 지정한 memberVO빈에 저장한다. memberVO타입으로-->
+		<result property="id" column="id" /> <!--(8~12줄)레코드의 컬럼 이름에 대해 memberVO의 같은 속성에 값을 설정한다.-->
+		<result property="pwd" column="pwd" /> <!--property는 memberVO의 필드, column은 db의 컬럼값 : 즉, db에서 가져와서 memberVO필드에 넣어라(명칭동일하게)-->
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="joinDate" column="joinDate" />
+	</resultMap>
+	
+	<!--DAO id값으로 호출한다.-->
+	
+	<select id="selectAllMemberList" resultMap="memResult"> <!--반환되는 레코드를 memResult에 저장한다.-->
+	<!-- id값인 selectAllMemberList로 DAO에서 select태그 안에 있는 sql문에 접근한다. -->
+	<!-- 밑에는 모든 회원 정보(모든 튜플)를 조회하는 sql문 -->
+		<![CDATA[
+			select * from t_member order by joinDate desc
+		]]>
+	</select>
+	
+	<select id="selectName" resultType="String"> <!--resultType 속성을 String으로 지정해 SQL문으로 조회한 이름(문자열)을 호출한 메서드로 반환한다.-->
+		<![CDATA[
+			select name from t_member where id = 'hong'
+		]]>
+	</select>
+	
+	<select id="selectPwd" resultType="int">
+		<![CDATA[
+			select pwd from t_member where id = 'hong'
+		]]>
+	</select>
+	
+	<select id="selectMemberById" resultType="memberVO" parameterType="String"> <!-- #{ } : db의 표현언어 -->
+		<![CDATA[
+			select * from t_member where id = #{id}  
+		]]>
+	</select>
+	
+	<select id="selectMemberByPwd" resultMap="memResult" parameterType="int">
+		<![CDATA[
+			select * from t_member where pwd = #{pwd}
+		]]>
+	</select>
+	
+	<insert id="insertMember" parameterType="memberVO">
+		<![CDATA[
+			insert into t_member(id, pwd, name, email)
+			values(#{id} ,#{pwd} ,#{name} ,#{email} )
+		]]>
+	</insert>
+	
+	<insert id="insertMember2" parameterType="java.util.Map"> <!--map형태로 받겠다.-->
+		<!--회원에게 값을 받아와서 db의 각 컬럼에 삽입한다.-->
+		<![CDATA[
+			insert into t_member(id, pwd, name, email)
+			values(#{id} ,#{pwd} ,#{name} ,#{email} )
+		]]>
+	</insert>
+	
+	<!--update : 회원정보 갱신(수정)-->
+	<update id="updateMember" parameterType="memberVO">
+		<![CDATA[
+			update t_member set pwd=#{pwd}, name=#{name}, email=#{email}
+			where id = #{id}
+		]]>
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		<![CDATA[
+			delete from t_member 
+			where id = #{id}
+		]]>
+	</delete>
+	
+	<!-- 동적 sql문 -->
+	<select id="searchMember" parameterType="memberVO" resultMap="memResult">
+		<![CDATA[
+		select * from t_member
+		]]>
+		<where>
+			<if test="name != '' and name != null">
+				name = #{name}
+			</if>
+			<if test="email != '' and email != null">
+				and email = #{email}
+			</if>
+		</where>
+		order by joinDate desc
+	</select>
+	
+	<select id="foreachSelect" resultMap="memResult" parameterType="java.util.Map">
+		<![CDATA[
+		select * from t_member
+		]]>
+		
+		where name in 
+		<foreach item ="item" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+		order by joinDate desc
+	</select>
+	
+	<insert id="foreachInsert" parameterType="java.util.Map">
+		insert INTO t_member(id, pwd, name, email)
+		VALUES
+		<foreach item="item" collection="list" index="index" separator=",">
+			(#{item.id}, #{item.pwd}, #{item.name}, #{item.email} )
+		</foreach>
+	</insert>
+	
+	<!-- like 검색 -->
+	<select id="selectLike" resultMap="memResult" parameterType="String">
+		<![CDATA[
+		select * from t_member
+		where
+		name like '%' || #{name} || '%'
+		]]>
+	</select>
+</mapper>

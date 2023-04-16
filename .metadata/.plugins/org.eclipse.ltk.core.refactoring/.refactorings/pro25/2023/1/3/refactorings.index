@@ -1,0 +1,9 @@
+1674092825232	Move 'config' to 'WEB-INF'
+1674092876754	Move 'action-servlet.xml' to 'WEB-INF'
+1674108891367	Move 'web.xml' to 'webapp'
+1674110144513	Move 'web.xml' to 'WEB-INF'
+1674112189124	Rename package 'com.spring.member.contoller'
+1674113610237	Move 'web.xml' to 'webapp'
+1674113708115	Move 'web.xml' to 'WEB-INF'
+1674116387067	Delete element
+1674116459568	Move 'web.xml' to 'webapp'

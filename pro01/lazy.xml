@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+                             "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+	<bean id="firstBean" class="com.spring.ex04.First" lazy-init="false" />
+	<bean id="secondBean" class="com.spring.ex04.Second" lazy-init="true" />
+	<bean id="thirdBean" class="com.spring.ex04.Third" lazy-init="default" />
+	
+	<!--lazy-init이란? : bean을 기동시점에 생성하는 것이 아닌 실제 사용시에 호출하는 방법(기동시간단축된다. 최초호출시점에서는 느리다.) 
+	    bean의 개수가 늘어날수록 기동시간이 늘기 때문에 덩치가 큰 프로젝트에서는 요긴하게 사용-->
+</beans>
